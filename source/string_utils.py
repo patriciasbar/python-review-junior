@@ -20,7 +20,7 @@ def personDetails():
         name = input("Please enter your name: ")
         age = int(input("Please enter your age: "))
         height = float(input("Please enter your height (cm): "))
-        return f"Name: {name}\nAge {age}\nHeight {height}  " 
+        return f"Name: {name}\nAge: {age}\nHeight: {height}  " 
     except Exception as e:
         return f"Please enter a valid input. {e}"
 
@@ -50,7 +50,7 @@ def reverseSentence(s):
 def funnyString():
     """
     Asks user for a sentence.
-    Returns its length, unique words and reversed sentence.
+    Returns its length, words and reversed sentence.
     """
     sentence = input("Hey there! enter a sentence...")
     string_len = checkStringLen(sentence)

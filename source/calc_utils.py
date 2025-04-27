@@ -14,13 +14,13 @@ def calcRectangle(length, width):
     Calculates the area of a rectangle.
     """
     # checks if valid input
-    if isinstance(length, float) and isinstance(width, float):
+    if isinstance(length, (int,float)) and isinstance(width, (int,float)):
         return length * width
     else:
         return f"Enter a valid input or inputs!"
 
 # Ask the user for two numbers and print the sum, difference, product, and quotient.
-def simpleMathOperations(n1, n2):
+def simpleMathOperations():
     """
     Calculates the sum, difference, product and quotient of given 2 numbers.
     """
@@ -35,7 +35,10 @@ def simpleMathOperations(n1, n2):
         # multiplication
         results["Multiplication"]=multiplication(n1,n2)
         # division
-        results["Division"]=n1/n2
+        if n2==0:
+            raise ZeroDivisionError
+        else:
+            results["Division"]=n1/n2
         return f"Results for {n1} and {n2} numbers: {results}"
     except ValueError as e:
         return f"Please enter a valid integer. {e}"
@@ -74,9 +77,24 @@ def calcAverage(n1,n2):
     Returns average between two numbers.
     """
     if isinstance(n1, (int, float)) and isinstance(n2, (int,float)):
-        return (n1+n2)/2
-    
+        return (n1+n2)/2   
     else:
-        return f"Enter valid numbers."
+        return None
 
 
+# Write a program that stores coordinates as tuples and prints their distances from the origin.
+def distanceCoordinates(o1, o2, p1, p2):
+    if type(o1) == type(o2) == type(p1) == type(p2):
+        origin=(o1, o2)
+        coordinates=(p1,p2)
+        return (coordinates[0] - origin[0], coordinates[1] - origin[1])
+    else:
+        return None
+    
+
+# Use the math module to calculate the square root and power of user-provided numbers.
+def calcsqrt(n):
+    return math.sqrt(n)
+
+def calcpow(n):
+    return math.pow(n,2)
