@@ -1,0 +1,19 @@
+{
+    "faves":
+        {
+            "movie": "Ti ti",
+            "song": "Noir",
+            "number": 12,
+            "foods": 
+                {
+                    "dessert":"Ice cream",
+                    "entry": "Soup",
+                    "main dish": "Fish and chips",
+                    "drinks": "Water"
+                }
+        }
+}
+
+
+
+
