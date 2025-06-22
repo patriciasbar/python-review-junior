@@ -1,0 +1,11 @@
+{
+    "name": "Pepe",
+    "details": {
+        "age": 31,
+        "address": {
+            "street": "Kiki St",
+            "city": "Tenten Momo"
+        },
+        "hobbies": ["reading", "running", {"type": "coding", "languages": ["Python", "Modern C++"]}]
+    }
+}

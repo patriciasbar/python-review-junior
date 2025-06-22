@@ -1,4 +1,5 @@
 import json
+import pprint
 
 input_filename = "resources/faves.json"
 output_filename = "resources/out_faves.json"
@@ -12,20 +13,24 @@ def write_to_json(data, file=output_filename, indent=4):
     with open(file, 'w') as f:
         json.dump(data, f, indent=indent)
 
-mydata = read_json()
-print(f"Fave number => {mydata['faves'].get('number')}")
-print(f"Fave song is '{mydata['faves'].get('song')}' and your fave movie is '{mydata['faves'].get('movie')}'")
-print(f"Fave drink => {mydata['faves']['foods'].get('drinks')}")
+def collect_key_paths(obj, parent_key=''):
+    paths = []
 
-foods = {k:v for (k,v) in mydata['faves']['foods'].items()}
-print(f"Total food items => {len(foods)}")
+    if isinstance(obj, dict):
+        for key, value in obj.items():
+            full_key = f"{parent_key}.{key}" if parent_key else key
+            paths.extend(collect_key_paths(value, full_key))
+    elif isinstance(obj, list):
+        for i, item in enumerate(obj):
+            full_key = f"{parent_key}[{i}]"
+            paths.extend(collect_key_paths(item, full_key))
+    else:
+        paths.append((parent_key, obj))
+    return paths
 
-print(mydata['faves']['foods'].get('snacks', "Not listed!"))
 
-mydata['faves']['number']=12
-print(f"Fave number => {mydata['faves'].get('number')}")
-
-write_to_json(mydata)
+obj1 = read_json(file="resources/test_data.json")
+pprint.pprint(collect_key_paths(obj1))
 
 
 
